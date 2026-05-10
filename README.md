@@ -34,7 +34,6 @@ If you skip `setup-cert.sh`, the app falls back to ad-hoc signing — it will st
 
 - macOS will warn: "Glimpse can't be opened because the developer cannot be verified." Right-click `Glimpse.app` → **Open** → **Open**. macOS remembers it.
 - The Settings window auto-opens. Paste your token and click **Save & validate**.
-- When the Keychain prompt appears for the token, click **Always Allow**.
 
 ## Token setup
 
@@ -42,7 +41,7 @@ If you skip `setup-cert.sh`, the app falls back to ad-hoc signing — it will st
 2. Note: `Glimpse`. Scopes: `repo`, `notifications`, `read:org`
 3. After creation, click **Configure SSO** → **Authorize** for any orgs you want Glimpse to see (no admin approval needed for classic tokens).
 
-The token is stored in your macOS Keychain; nothing leaves your machine except calls to `api.github.com` over HTTPS.
+The token is stored in `~/Library/Application Support/Glimpse/token` with `chmod 600` (owner-only read/write) — same security model as `gh auth token` and `~/.aws/credentials`. Nothing leaves your machine except calls to `api.github.com` over HTTPS.
 
 ## Configuration
 

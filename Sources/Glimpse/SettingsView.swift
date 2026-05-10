@@ -61,6 +61,14 @@ struct SettingsView: View {
                 Toggle("Ready to merge", isOn: $notifyReady).disabled(!notificationsEnabled)
                 Toggle("Checks failed", isOn: $notifyChecksFailed).disabled(!notificationsEnabled)
                 Toggle("GitHub inbox (mentions, reviews, comments)", isOn: $notifyInbox).disabled(!notificationsEnabled)
+                Button("Send test notification") {
+                    Notifier.shared.notify(
+                        id: "test-\(UUID().uuidString)",
+                        title: "Ready to merge",
+                        body: "quickcommerceltd/zim#474 — example PR title",
+                        url: URL(string: "https://github.com")
+                    )
+                }
             }
 
             Section("Polling") {
