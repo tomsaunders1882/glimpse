@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="Resources/AppIcon.png" alt="Glimpse icon" width="128" height="128">
+</p>
+
 # Glimpse
 
 A lean macOS menu bar app for tracking GitHub PRs and notifications.
