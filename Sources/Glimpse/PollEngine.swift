@@ -96,6 +96,17 @@ final class PollEngine {
                 )
             }
 
+            let wasApproved = !isNewCommit && oldReview == .approved
+            let isApproved = pr.reviewDecision == .approved
+            if Preferences.approved, !wasApproved, isApproved {
+                Notifier.shared.notify(
+                    id: "approved-\(pr.id)-\(pr.commitOid)",
+                    title: "Approved",
+                    body: "\(pr.repo)#\(pr.number) — \(pr.title)",
+                    url: pr.url
+                )
+            }
+
             let oldFailed = !isNewCommit && (oldRollup == .failure || oldRollup == .error)
             let nowFailed = pr.rollup == .failure || pr.rollup == .error
             if Preferences.checksFailed, !oldFailed, nowFailed {

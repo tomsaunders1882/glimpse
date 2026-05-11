@@ -8,6 +8,7 @@ struct SettingsView: View {
 
     @AppStorage(PreferenceKeys.notificationsEnabled) private var notificationsEnabled = true
     @AppStorage(PreferenceKeys.notifyMerged) private var notifyMerged = true
+    @AppStorage(PreferenceKeys.notifyApproved) private var notifyApproved = true
     @AppStorage(PreferenceKeys.notifyReady) private var notifyReady = true
     @AppStorage(PreferenceKeys.notifyChecksFailed) private var notifyChecksFailed = true
     @AppStorage(PreferenceKeys.notifyInbox) private var notifyInbox = true
@@ -58,6 +59,7 @@ struct SettingsView: View {
             Section("Notifications") {
                 Toggle("Enable notifications", isOn: $notificationsEnabled)
                 Toggle("PR merged", isOn: $notifyMerged).disabled(!notificationsEnabled)
+                Toggle("Approved", isOn: $notifyApproved).disabled(!notificationsEnabled)
                 Toggle("Ready to merge", isOn: $notifyReady).disabled(!notificationsEnabled)
                 Toggle("Checks failed", isOn: $notifyChecksFailed).disabled(!notificationsEnabled)
                 Toggle("GitHub inbox (mentions, reviews, comments)", isOn: $notifyInbox).disabled(!notificationsEnabled)
